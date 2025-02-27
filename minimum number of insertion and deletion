@@ -1,0 +1,55 @@
+//{ Driver Code Starts
+// Initial Template for Java
+import java.io.*;
+import java.util.*;
+
+class GfG {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while (t-- > 0) {
+            String s1 = sc.next();
+            String s2 = sc.next();
+            Solution ob = new Solution();
+            System.out.println(ob.minOperations(s1, s2));
+
+            System.out.println("~");
+        }
+    }
+}
+// } Driver Code Ends
+
+
+// User function Template for Java
+
+ {
+    public int minOperations(String s1, String s2) {
+        int i=s1.length();
+        int j=s2.length();
+        int dp[][]=new int[i+1][j+1];
+        int lcs=f(i,j,s1,s2,dp);
+        int ans1=s1.length()-lcs;
+        int ans2= ans1+(s2.length()-lcs);
+        return ans2;
+        
+        // Your code goes here
+    }
+    private static int f(int n,int m,String s1,String s2,int[][] dp)
+    {
+        for(int i=0;iclass Solution<=n;i++)
+        dp[i][0]=0;
+        for(int j=0;j<=m;j++)
+        dp[0][j]=0;
+        for(int i=1;i<=n;i++)
+        {
+            for(int j=1;j<=m;j++)
+            {
+                if(s1.charAt(i-1)==s2.charAt(j-1))
+                dp[i][j]=1+dp[i-1][j-1];
+                else
+                dp[i][j]=Math.max(dp[i-1][j],dp[i][j-1]);
+            }
+        }return dp[n][m];
+        
+    }
+}
