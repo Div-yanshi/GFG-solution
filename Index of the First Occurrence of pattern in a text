@@ -1,0 +1,21 @@
+
+
+// User function Template for Java
+
+class Solution {
+    public int findMatching(String text, String pat) {
+        String str="";
+        // Code here  {
+        for(int i=0;i<text.length();i++)
+        {
+            if(text.charAt(i)==pat.charAt(0) && (i+pat.length()<=text.length()))
+            { str=text.substring(i,(i+pat.length()));
+                if(pat.equals(str))
+                return i;
+            }
+        }
+                
+            
+        return -1;
+    }
+}
