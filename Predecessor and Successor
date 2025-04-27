@@ -1,0 +1,51 @@
+
+class Solution {
+    public static void findPreSuc(Node root, Node[] pre, Node[] suc, int x) {
+        // code here.
+        // update pre[0] with the predecessor of the key
+        suc[0]=null;
+        pre[0]=null;
+  
+    floor(root,pre,x);
+      ceil(root,suc,x);
+       
+        
+    }
+        private static void floor(Node root,Node[] pre,int x)
+        {
+   while(root!=null)
+   {
+       if(x>root.data)
+       {
+           pre[0]=root;
+          root=root.right;
+      }
+       else
+       {
+         root=root.left;
+       }
+   }
+        }
+        
+        private static void ceil(Node root,Node[] suc,int x){
+    
+     
+    
+     while(root!=null)
+     {
+         if(x<root.data){
+               suc[0]=root;
+         root=root.left;
+         }
+      
+         else{
+            root=root.right;
+         
+             
+         }
+    
+        }
+        
+ 
+    }
+}
