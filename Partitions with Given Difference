@@ -1,0 +1,40 @@
+
+
+
+class Solution {
+    int countPartitions(int[] arr, int d) {
+       
+        int tot=0;
+        for(int i=0;i<arr.length;i++)
+        tot=tot+arr[i];
+        int s2=(tot-d)/2;
+        if((tot-d)%2!=0 || s2<0)
+        return 0;
+        int dp[][]=new int[arr.length][s2+1];
+        for(int row[]:dp)
+        Arrays.fill(row,-1);
+        return f(arr.length-1,s2,arr,dp);
+        
+        // code here
+    }
+    private static int f(int i,int tar,int[] arr,int[][] dp)
+    {
+        
+        if(i==0){
+            if(tar==0 && arr[0]==0)
+            return 2;
+            if(tar==0 || tar==arr[0])
+            return 1;
+            else
+            return 0;
+            
+        }
+        if(dp[i][tar]!=-1)
+        return dp[i][tar];
+        int notpick=f(i-1,tar,arr,dp);
+        int pick=0;
+        if(tar>=arr[i])
+        pick=f(i-1,tar-arr[i],arr,dp);
+        return dp[i][tar]=pick+ notpick;
+    }
+}
