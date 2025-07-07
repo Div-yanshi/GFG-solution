@@ -1,0 +1,27 @@
+// User function Template for Java
+
+class Solution {
+    public static int kthSmallest(int[] arr, int k) {
+        // Your code here
+       
+        for(int i=1;i<arr.length;i++){
+            
+        
+            for( int j=i;j>0;j--){
+                if(arr[j]<arr[j-1])
+               {
+                   int t=arr[j];
+                   arr[j]=arr[j-1];
+                   arr[j-1]=t;
+               }
+                else
+                break;
+                
+                                            }
+        }   
+        
+        return arr[k-1];
+       
+    
+}
+}
