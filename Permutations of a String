@@ -1,0 +1,47 @@
+class Solution {
+    public ArrayList<String> findPermutation(String s) {
+        // Code here
+  
+        ArrayList<String> ans=new ArrayList<>();
+        char[] arr=s.toCharArray();
+        Arrays.sort(arr);
+       
+        find(0,arr,ans);
+        return ans;
+    }
+    private void find(int ind ,char[] s ,ArrayList<String> ans)
+    {   
+        if(ind==s.length){
+         String str="";
+        for(int i=0;i<s.length;i++)
+        {
+           str=str+s[i];
+        }
+      
+        ans.add(str);
+        return;
+            
+        }
+        Set<Charater> seen=new HashSet<>();
+        
+        
+        for(int i=ind;i<s.length;i++)
+        { 
+            if(seen.contains(s[i])){
+            continue;}
+            seen.add(s[i]);
+            swap(i,ind,s);
+            find(ind+1,s,ans);
+           
+            swap(i,ind,s);}
+        }
+        
+                   
+        private void swap(int i,int j,char[] s){
+            
+            char c=s[i];
+           s[i]=s[j];
+           s[j]=c;
+                 }
+    
+}
