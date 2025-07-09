@@ -1,0 +1,29 @@
+class Solution {
+    // Function to sort an array of 0s, 1s, and 2s
+    public void sort012(int[] arr) {
+        // code here
+        int i=0,s=0,e=arr.length-1;
+       while(i<=e){
+         if(arr[i]==0)
+        {
+            swap(arr,s,i);
+            i++;s++;
+            
+        }
+        else if(arr[i]==2){
+            swap(arr,e,i);
+            e--;
+            
+        }
+        else
+        i++;
+    }
+    
+    }
+    private void swap(int[] arr,int i,int j)
+    {
+        int t=arr[i];
+        arr[i]=arr[j];
+        arr[j]=t;
+    }
+}
