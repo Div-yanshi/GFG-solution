@@ -1,0 +1,42 @@
+/*
+class Node{
+    int data;
+    Node left;
+    Node right;
+    Node(int data){
+        this.data = data;
+        left=null;
+        right=null;
+    }
+}
+
+*/
+class Solution {
+    public boolean isSymmetric(Node root) {
+        // Code here
+      
+        if (root == null) return true;
+
+        
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(root.left);
+        queue.offer(root.right);
+
+        while (!queue.isEmpty()) {
+            Node left = queue.poll();
+            Node right = queue.poll();
+
+            if (left == null && right == null) continue;
+
+            
+            if (left == null || right == null || left.data != right.data) return false;
+
+            queue.offer(left.left);  
+            queue.offer(right.right);
+            queue.offer(left.right); 
+            queue.offer(right.left);
+        }
+
+        return true; 
+    }
+}
