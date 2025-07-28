@@ -1,0 +1,30 @@
+
+class Solution {
+    // Return the Kth smallest element in the given BST
+    int count=0;
+    int result=-1;
+    public int kthSmallest(Node root, int k) {
+        // Write your code here
+       
+        inorder(root,k);
+        return result;
+        
+        
+        
+        
+    }
+    private void inorder(Node root,int k)
+    {
+        if(root == null )
+        return;
+        
+        inorder(root.left,k);
+          if(++count==k)
+      
+         
+         result=root.data;
+        inorder(root.right,k);
+      
+    
+}
+}
