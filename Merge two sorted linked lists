@@ -1,0 +1,32 @@
+
+class Solution {
+    Node sortedMerge(Node head1, Node head2) {
+        // code here
+        Node ans=new Node(0);
+        Node anshead=ans;
+        while(head1!=null && head2!=null)
+        {
+            if(head1.data<=head2.data){
+            ans.next=(head1);
+            ans=ans.next;
+            head1=head1.next;
+            
+            }
+            else if(head2.data<head1.data){
+            ans.next=(head2);
+            ans=ans.next;
+            head2=head2.next;
+            }
+            
+        }
+        if(head1!=null)
+        {
+            ans.next=head1;
+        }
+        if(head2!=null)
+        {
+            ans.next=head2;
+        }
+        return anshead.next;
+    }
+}
