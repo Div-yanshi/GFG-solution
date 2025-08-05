@@ -1,0 +1,56 @@
+/* Following is the Linked list node structure */
+
+/*class Node
+{
+    int data;
+    Node next;
+    Node(int d) {
+        data = d;
+        next = null;
+    }
+}*/
+
+class Solution {
+    void reorderlist(Node head) {
+      Node slow=head,fast=head,prev=null,head1=head;int i=0; 
+        Node temp=head;
+        if(head!=null && head.next!=null && head.next.next!=null){
+        
+        while(fast!=null && fast.next!=null)
+        {
+            prev=slow;
+            slow=slow.next;
+            fast=fast.next.next;
+
+        }if(prev!=null)
+        prev.next=null;
+        Node head2=reverse(slow);
+        while(head1!=null && head2!=null &&head1.next!=null)
+        {
+          Node curr=head1.next;
+          head1.next=head2;
+          head1=head1.next;
+          head2=head2.next;
+          head1.next=curr;
+          head1=head1.next;      
+
+        }
+        
+        if(head2!=null)
+        head1.next=head2;     
+    }}
+    private Node reverse(Node slow)
+    {
+        Node prev=null;
+        while(slow!=null)
+        {
+            Node next=slow.next;
+            slow.next=prev;
+            prev=slow;
+            slow=next;
+        }
+        return prev;
+
+    }
+
+}
