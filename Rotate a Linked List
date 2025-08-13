@@ -1,0 +1,35 @@
+
+class Solution {
+    public Node rotate(Node head, int k) {
+        // add code here
+        Node temp=head;int l=0;
+        Node dummyhead=new Node(0);
+        Node dummy=dummyhead;
+        while(temp.next!=null)
+        {
+            l++;
+            temp=temp.next;
+        }l++;
+        
+        k=k%l;
+        if(k==0){
+        return head;}
+        temp=head;
+        Node prev=null;
+        while(k--!=0 )
+        {
+            prev=temp;
+            
+            temp=temp.next;
+        }
+        prev.next=null;
+        dummy.next=temp;
+        while(temp.next!=null)
+        {
+            temp=temp.next;
+        }
+        temp.next=head;
+        return dummyhead.next;
+        
+    }
+}
