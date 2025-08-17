@@ -1,0 +1,56 @@
+
+class Solution {
+    public int countIslands(char[][] grid) {
+        
+        // Code here
+        int cnt=0;
+        int r=grid.length;
+        int c=grid[0].length;
+        boolean vis[][]=new boolean[r][c];
+       
+        for(int i=0;i<r;i++){
+            for(int j=0;j<c;j++){
+                if(grid[i][j]=='L' && vis[i][j]==false)
+                {
+                    cnt++;
+                    bfs(i,j,grid,vis);
+                }
+            }
+        } return cnt;
+        
+    }
+    private static void bfs(int row,int col,char [][] grid,boolean [][] vis){
+        
+            vis[row][col]=true;
+            Queue<Pair> q=new LinkedList<Pair>();
+            q.add(new Pair(row,col));
+            vis[row][col]=true;
+            int ro=grid.length;
+            int co=grid[0].length;
+            while(!q.isEmpty()){
+                int n=q.peek().first;
+                int m=q.peek().second;
+                q.remove();
+                for(int i=-1;i<=1;i++)
+                {
+                    for(int j=-1;j<=1;j++){
+                        int delrow=n+i;
+                        int delcol=m+j;
+                        if(delrow>=0 && delrow<ro && delcol>=0 && delcol<co && grid[delrow][delcol]=='L' && vis[delrow][delcol]==false){
+                            vis[delrow][delcol]=true;
+                            q.add(new Pair(delrow,delcol));
+                        }
+                    }
+                
+            }
+            
+        }
+    }
+}
+class Pair{
+    int first,second;
+    public Pair(int first,int second){
+        this.first=first;
+        this.second=second;
+    }
+}
