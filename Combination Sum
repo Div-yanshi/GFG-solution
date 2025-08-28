@@ -1,0 +1,35 @@
+// User function template for JAVA
+
+class Solution {
+    // Function to find all combinations of elements
+    // in array arr that sum to target.
+    static ArrayList<ArrayList<Integer>> combinationSum(int[] arr, int target) {
+        // add your code here
+        
+        ArrayList<ArrayList<Integer>> ans=new ArrayList<>();
+        ArrayList<Integer> list=new ArrayList<>();
+        recur(0,target,arr,arr.length,list,ans);
+        return ans;
+        
+        
+        
+    }
+    private static void recur(int i,int target,int[] arr, int n, ArrayList<Integer> list,ArrayList<ArrayList<Integer>> ans){
+       if(i==n)
+       {
+           if(target==0)
+           {
+               ans.add(new ArrayList<>(list));
+           }
+           return;
+       }
+       if(target>=arr[i]){
+           list.add(arr[i]);
+            recur(i,target-arr[i],arr,n,list,ans);
+            list.remove(list.size()-1);
+       }
+       recur(i+1, target,arr,n, list,ans);
+       
+       
+    }
+}
