@@ -1,0 +1,22 @@
+/*
+class Node{
+    int data;
+    Node left,right;
+    Node(int d){
+        data=d;
+        left=right=null;
+    }
+}*/
+
+class Solution {
+    boolean isIdentical(Node root1, Node root2) {
+        // code here
+        
+      return check(root1,root2);
+    }
+    private static boolean check(Node p,Node q){
+        if(p==null || q==null)
+        return (p==q);
+        return (p.data==q.data) && check (p.left,q.left)&&check(p.right,q.right);
+    }
+}
