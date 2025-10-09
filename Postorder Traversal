@@ -1,0 +1,22 @@
+
+class Solution {
+    
+    public ArrayList<Integer> postOrder(Node root) {
+        // code here
+        
+     ArrayList<Integer> arr=new ArrayList<>();
+        // code here
+        inOrder1(root,arr);
+        return arr;
+    }
+    private void inOrder1(Node root,ArrayList<Integer> arr){
+    
+        if(root==null)
+        return;
+        inOrder1(root.left,arr);
+        
+        inOrder1(root.right,arr);
+        arr.add(root.data);
+        
+}}
+    
