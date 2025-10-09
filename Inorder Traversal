@@ -1,0 +1,18 @@
+
+class Solution {
+    ArrayList<Integer> arr=new ArrayList<>();
+    public ArrayList<Integer> inOrder(Node root) {
+        // code here
+        inOrder1(root);
+        return arr;
+    }
+    private void inOrder1(Node root){
+    
+        if(root==null)
+        return;
+        inOrder1(root.left);
+        
+        inOrder1(root.right);
+        arr.add(root.data);
+        
+}}
